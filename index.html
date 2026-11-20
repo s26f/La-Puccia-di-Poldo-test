@@ -1,0 +1,1783 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Puccia di Poldo | Brugherio</title> <!-- Titolo scheda browser -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Tilt+Neon&display=swap" rel="stylesheet">   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Colori principali sito */
+        :root {
+            --primary-orange: #f49701; /* Arancione bottoni */
+            --light-orange: #ffae2b; /* Arancione chiaro */
+            --deep-red: #d91e2a;
+            --soft-cream: #fff5eb;
+            --dark-bg: #15100d; /* Sfondo scuro pagina */
+            --dark-card: #201814; /* Sfondo riquadri */
+            --white: #FFFFFF;
+            --text-light: #f2ece6;
+            --text-muted: #c7bdb3;
+            --border-subtle: rgba(244, 151, 1, 0.28);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--white);
+            line-height: 1.65;
+            overflow-x: hidden;
+        }
+
+        .neon-red {
+            color: #e6222e;
+            text-shadow: 
+                0 0 4px rgba(255, 220, 220, 0.5),
+                0 0 14px rgba(217, 30, 42, 0.95),
+                0 0 28px rgba(175, 15, 25, 0.85),
+                0 2px 4px rgba(0, 0, 0, 0.9);
+        }
+
+
+
+        /* Barra menu in alto */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(21, 16, 13, 0.96);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            padding: 0.8rem 5%;
+            transition: var(--transition);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        .logo-img {
+            height: 46px; /* Dimensione logo alto */
+            width: 46px; /* Dimensione logo alto */
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid var(--light-orange);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.8rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 0.92rem; /* Dimensione voci menu */
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--light-orange);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--light-orange);
+        }
+
+        .cta-btn {
+            background: var(--primary-orange);
+            color: var(--white);
+            padding: 0.82rem 1.9rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.88rem; /* Dimensione testo bottone */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 4px 14px rgba(232, 122, 36, 0.3);
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            background: var(--light-orange);
+            color: var(--dark-bg);
+            transform: translateY(-2px);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            background: none;
+            border: none;
+            padding: 6px;
+            margin-left: auto;
+            z-index: 1002;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 26px;
+            height: 2.5px;
+            background-color: var(--white);
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+
+
+        /* Copertina principale */
+        .hero {
+            position: relative;
+            min-height: 85vh; /* Altezza copertina */
+            background-image: 
+                linear-gradient(rgba(15, 11, 9, 0.52), rgba(15, 11, 9, 0.68)),
+                url('fotoTitolo.png'); /* Cambia foto sfondo */
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 7rem 5% 4rem;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-family: 'Neonderthaw', cursive;
+            font-size: 5.4rem; /* Dimensione titolo */
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 1.2rem;
+            color: var(--white);
+            text-shadow:
+                0 2px 3px rgba(0, 0, 0, 0.95), 
+                0 0 8px rgba(255, 255, 255, 0.85),
+                0 0 20px rgba(232, 122, 36, 0.8),
+                0 0 38px rgba(232, 122, 36, 0.55);
+        }
+
+        .hero-content p {
+            font-size: 1.15rem; /* Dimensione sottotitolo copertina */
+            color: var(--soft-cream);
+            margin-bottom: 2.3rem;
+            font-weight: 400;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85);
+        }
+
+        .hero-title-img {
+            max-width: 580px; /* Dimensione scritta titolo */
+            width: 100%;
+            height: auto;
+            margin-bottom: 1.2rem;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.75));
+        }
+
+        .section-title-img {
+            max-width: 380px; /* Dimensione titoli sezioni */
+            width: 85%;
+            height: auto;
+            display: block;
+            margin: 0 auto 1rem auto;
+            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.7));
+        }
+
+        .about-content .section-title-img {
+            margin: 0 0 1.2rem 0;
+            max-width: 300px; /* Dimensione titolo Chi Siamo */
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-outline {
+            border: 1.5px solid rgba(255, 255, 255, 0.85);
+            background: rgba(21, 16, 13, 0.45);
+            backdrop-filter: blur(4px);
+            color: var(--white);
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--dark-bg);
+        }
+
+
+
+        /* Sezione Orari e Recapiti */
+        .info-section {
+            padding: 5.5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            scroll-margin-top: 8vh;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Tilt Neon', sans-serif;
+            font-size: 3rem; /* Dimensione titolo */
+            font-weight: 400;
+            color: var(--white);
+            text-shadow: 
+                0 0 6px rgba(255, 255, 255, 0.7),
+                0 0 16px rgba(232, 122, 36, 0.7),
+                0 0 30px rgba(232, 122, 36, 0.45);
+        }
+
+        .info-dual-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: stretch;
+        }
+
+        .minimal-card {
+            background: var(--dark-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .minimal-card h3 {
+            font-size: 1.2rem; /* Dimensione titoli box info */
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .minimal-card h3 i {
+            color: var(--light-orange);
+            font-size: 1.1rem;
+        }
+
+        .phone-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.85rem; /* Dimensione numero telefono */
+            font-weight: 800;
+            color: var(--white);
+            text-decoration: none;
+            margin-bottom: 1.8rem;
+            transition: var(--transition);
+        }
+
+        .phone-link i {
+            font-size: 1.3rem;
+            color: var(--light-orange);
+            background: rgba(245, 156, 81, 0.14);
+            padding: 12px;
+            border-radius: 50%;
+        }
+
+        .phone-link:hover {
+            color: var(--light-orange);
+        }
+
+        .minimal-services-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+
+        .minimal-services-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.98rem; /* Dimensione scritte servizi */
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .minimal-check {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 1.5px solid #4cd964;
+            color: #4cd964;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.72rem;
+            flex-shrink: 0;
+        }
+
+        .hours-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+            margin-bottom: auto;
+        }
+
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            font-size: 0.95rem; /* Dimensione scritte orari */
+        }
+
+        .hours-list li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .hours-list .day {
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .hours-list .time {
+            color: var(--light-orange);
+            font-weight: 700;
+        }
+
+        .hours-list .closed {
+            color: #ff6b6b;
+            font-weight: 600;
+        }
+
+
+
+        /* Sezione Menu */
+        .menu-section {
+            position: relative;
+            padding: 6rem 5%;
+            background-color: #4a423c;
+            background-image: 
+                linear-gradient(rgba(18, 14, 11, 0.46), rgba(18, 14, 11, 0.54)),
+                url('mattoni.png'); /* Sfondo mattoni menu */
+            background-size: 520px auto;
+            background-repeat: repeat;
+            background-position: center top;
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+            scroll-margin-top: 8vh;
+        }
+
+        .menu-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .menu-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.65rem;
+            margin-bottom: 3rem;
+        }
+
+        .menu-tab-btn {
+            background: rgba(21, 16, 13, 0.92);
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 0.58rem 1.2rem;
+            border-radius: 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem; /* Dimensione tasti categorie */
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .menu-tab-btn:hover, .menu-tab-btn.active {
+            background: var(--primary-orange);
+            color: var(--white);
+            border-color: var(--primary-orange);
+            box-shadow: 0 3px 12px rgba(232, 122, 36, 0.4);
+        }
+
+        .menu-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 2.2rem;
+        }
+
+        .menu-box {
+            background: rgba(21, 16, 13, 0.93);
+            backdrop-filter: blur(8px);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(245, 156, 81, 0.25);
+            box-shadow: 0 14px 35px rgba(0,0,0,0.55);
+            width: 100%;
+        }
+
+        .menu-box.hidden {
+            display: none;
+        }
+
+        .menu-box h3 {
+            font-family: 'Tilt Neon', sans-serif;
+            font-size: 1.9rem; /* Dimensione titolo categoria */
+            font-weight: 400;
+            margin-bottom: 1.8rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid rgba(245, 156, 81, 0.35);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: var(--white);
+            text-shadow: 0 0 10px rgba(232, 122, 36, 0.65);
+        }
+
+        .menu-box h3 i, .menu-box h3 svg {
+            color: var(--light-orange);
+            fill: var(--light-orange);
+            font-size: 1.35rem;
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+
+        .menu-items-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            column-gap: 2.5rem;
+            row-gap: 1.4rem;
+        }
+
+        .menu-item {
+            padding-bottom: 1.1rem;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.12);
+        }
+
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 0.3rem;
+        }
+
+        .item-title {
+            font-weight: 700;
+            font-size: 1rem; /* Dimensione nome piatto */
+            color: var(--white);
+        }
+
+        .badge-tag {
+            font-size: 0.68rem;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+
+        .badge-veg {
+            background: rgba(76, 217, 100, 0.18);
+            color: #6ee787;
+            border: 1px solid rgba(76, 217, 100, 0.4);
+        }
+
+        .badge-spicy {
+            background: rgba(255, 107, 107, 0.18);
+            color: #ff8787;
+            border: 1px solid rgba(255, 107, 107, 0.4);
+        }
+
+        .badge-na {
+            background: rgba(255, 255, 255, 0.1);
+            color: #bbb;
+        }
+
+        .item-price {
+            font-weight: 700;
+            color: var(--light-orange);
+            font-size: 1rem; /* Dimensione prezzo */
+            white-space: nowrap;
+        }
+
+        .item-desc {
+            font-size: 0.85rem; /* Dimensione ingredienti */
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+
+
+        /* Sezione Carosello Foto */
+        .carousel-section {
+            padding: 6rem 5%;
+            max-width: 1300px;
+            margin: 0 auto;
+            position: relative;
+            scroll-margin-top: 8vh;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 390px; /* Altezza carosello */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 2rem;
+            perspective: 1000px;
+        }
+
+        .carousel-track {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            width: 290px; /* Larghezza foto carosello */
+            height: 350px; /* Altezza foto carosello */
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.45);
+            transition: all 0.5s ease-in-out;
+            opacity: 0;
+            transform: scale(0.6) translateX(0);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+            transform: scale(1.05) translateX(0);
+            z-index: 10;
+            pointer-events: auto;
+            border: 2px solid var(--light-orange);
+        }
+
+        .carousel-slide.prev {
+            opacity: 0.65;
+            transform: scale(0.8) translateX(-200px);
+            z-index: 5;
+        }
+
+        .carousel-slide.next {
+            opacity: 0.65;
+            transform: scale(0.8) translateX(200px);
+            z-index: 5;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--dark-card);
+            color: var(--white);
+            border: 1px solid var(--light-orange);
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 20;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .carousel-btn:hover {
+            background: var(--primary-orange);
+            color: var(--white);
+        }
+
+        .carousel-btn.prev-btn { left: 10px; }
+        .carousel-btn.next-btn { right: 10px; }
+
+
+
+        /* Sezione Chi Siamo e Lavora con noi */
+        .about-section {
+            position: relative;
+            padding: 6rem 5%;
+            background-color: #4a423c;
+            background-image: 
+                linear-gradient(rgba(18, 14, 11, 0.58), rgba(18, 14, 11, 0.65)),
+                url('mattoni.png'); /* Sfondo mattoni Chi Siamo */
+            background-size: 520px auto;
+            background-repeat: repeat;
+            background-position: center top;
+            border-top: 1px solid var(--border-subtle);
+            scroll-margin-top: 8vh;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: stretch;
+        }
+
+        .about-content {
+            background: rgba(21, 16, 13, 0.9);
+            backdrop-filter: blur(6px);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-subtle);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .about-content h2 {
+            font-family: 'Tilt Neon', sans-serif;
+            font-size: 2.8rem; /* Dimensione titolo */
+            font-weight: 400;
+            color: var(--white);
+            margin-bottom: 1.2rem;
+            text-shadow: 0 0 12px rgba(232, 122, 36, 0.7);
+        }
+
+        .about-content p {
+            color: var(--text-light);
+            margin-bottom: 1.2rem;
+            font-size: 1.02rem; /* Dimensione testo Chi Siamo */
+        }
+
+        .about-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-info-box {
+            background: rgba(21, 16, 13, 0.9);
+            backdrop-filter: blur(6px);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-subtle);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-info-box h3 {
+            font-size: 1.35rem; /* Dimensione titolo Lavora con noi */
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 1.2rem;
+            color: var(--text-light);
+            font-size: 0.95rem; /* Dimensione scritte contatti */
+        }
+
+        .info-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-list i {
+            color: var(--light-orange);
+            font-size: 1.15rem;
+            margin-top: 4px;
+        }
+
+
+
+        /* Footer fondo pagina */
+        footer {
+            background: #0d0a08;
+            color: #999;
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        footer p {
+            font-size: 0.9rem; /* Dimensione scritte footer */
+            margin-bottom: 0.4rem;
+            color: var(--text-muted);
+        }
+
+        .fiscal-data {
+            font-size: 0.82rem;
+            color: #777;
+        }
+
+
+
+        /* Adattamento Cellulare e Tablet */
+        @media (max-width: 992px) {
+            .hero {
+                background-attachment: scroll;
+            }
+            .info-dual-grid, .about-container, .menu-items-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-content h1 {
+                font-size: 3.9rem; /* Dimensione titolo su telefono */
+            }
+            .hamburger {
+                display: flex;
+            }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: fixed;
+                top: 66px;
+                left: 0;
+                right: 0;
+                width: 100%;
+                background: rgba(21, 16, 13, 0.98);
+                padding: 25px 0;
+                text-align: center;
+                border-bottom: 1px solid var(--light-orange);
+                box-shadow: 0 15px 30px rgba(0,0,0,0.7);
+            }
+            nav ul.active {
+                display: flex;
+            }
+            .carousel-slide.prev { transform: scale(0.75) translateX(-110px); }
+            .carousel-slide.next { transform: scale(0.75) translateX(110px); }
+        }
+    </style>
+</head>
+<body>
+
+
+
+    <!-- BARRA MENU IN ALTO -->
+    <header>
+        <div class="nav-container">
+            <a href="#home" class="logo-wrapper" aria-label="Home La Puccia di Poldo">
+                <img src="logo.jpg" alt="Logo La Puccia di Poldo" class="logo-img"> <!-- Cambia Logo -->
+            </a>
+            
+            <button class="hamburger" id="hamburger" aria-label="Apri menu di navigazione">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav>
+                <ul id="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#info">Orari & Recapiti</a></li>
+                    <li><a href="#menu">Menù</a></li>
+                    <li><a href="#ambiente">Ambiente</a></li>
+                    <li><a href="#chisiamo">Chi Siamo</a></li>
+                    <li><a href="#lavora">Lavora con noi</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+
+    <!-- COPERTINA PRINCIPALE (HERO) -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <img src="scrittaTitolo.png" alt="La Puccia di Poldo" class="hero-title-img"> <!-- Immagine Titolo -->
+            <p>Prodotti tipici artigianali, ingredienti di prima scelta e tanta passione in un'atmosfera calorosa e familiare.</p> <!-- Testo Sottotitolo -->
+            <div class="hero-buttons">
+                <a href="#menu" class="cta-btn">Esplora il Menù</a>
+                <a href="#info" class="btn-outline">Orari e Recapiti</a>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- SEZIONE ORARI E RECAPITI -->
+    <section id="info" class="info-section">
+        <div class="section-header">
+            <img src="orariScritta.png" alt="Orari e Recapiti" class="section-title-img"> <!-- Titolo Orari -->
+        </div>
+
+        <div class="info-dual-grid">
+            <div class="minimal-card">
+                <div>
+                    <h3><i class="fa-solid fa-headset"></i> Contatti & Servizi</h3>
+                    <a href="tel:0399876543" class="phone-link"> <!-- Numero Telefono -->
+                        <i class="fa-solid fa-phone"></i>
+                        <span>039 9876543</span>
+                    </a>
+                </div>
+                <ul class="minimal-services-list">
+                    <li>
+                        <span class="minimal-check"><i class="fa-solid fa-check"></i></span>
+                        <span>Consumazione sul posto</span>
+                    </li>
+                    <li>
+                        <span class="minimal-check"><i class="fa-solid fa-check"></i></span>
+                        <span>Consegna a domicilio</span>
+                    </li>
+                    <li>
+                        <span class="minimal-check"><i class="fa-solid fa-check"></i></span>
+                        <span>Servizio d'asporto</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="minimal-card">
+                <h3><i class="fa-regular fa-clock"></i> Orari di Apertura</h3> <!-- Orari apertura -->
+                <ul class="hours-list">
+                    <li>
+                        <span class="day">Lunedì – Giovedì</span>
+                        <span class="time">18:30 – 23:00</span>
+                    </li>
+                    <li>
+                        <span class="day">Venerdì – Sabato</span>
+                        <span class="time">18:30 – 00:00</span>
+                    </li>
+                    <li>
+                        <span class="day">Domenica</span>
+                        <span class="time">18:30 – 23:30</span>
+                    </li>
+                    <li>
+                        <span class="day">Martedì</span>
+                        <span class="closed">Chiuso</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- SEZIONE MENU -->
+    <section id="menu" class="menu-section">
+        <div class="menu-container">
+            <div class="section-header">
+                <img src="menuScritta.png" alt="Menù" class="section-title-img"> <!-- Titolo Menu -->
+            </div>
+
+            <!-- Tasti filtro categorie -->
+            <div class="menu-tabs" id="menuTabs">
+                <button class="menu-tab-btn active" data-filter="pucce">Pucce</button>
+                <button class="menu-tab-btn" data-filter="panzerotti">Panzerotti</button>
+                <button class="menu-tab-btn" data-filter="pizze">Pizze</button>
+                <button class="menu-tab-btn" data-filter="piatti">Piatti</button>
+                <button class="menu-tab-btn" data-filter="fritti">Fritti & Focacce</button>
+                <button class="menu-tab-btn" data-filter="bimbi">Per i Bimbi</button>
+                <button class="menu-tab-btn" data-filter="dolci">Dolci</button>
+                <button class="menu-tab-btn" data-filter="bevande">Bevande</button>
+            </div>
+
+            <div class="menu-stack">
+                
+
+                <!-- Categoria: PUCCE SPECIALI -->
+                <div class="menu-box" data-category="pucce">
+                    <h3><i class="fa-solid fa-burger"></i> Pucce</h3>
+                    <div class="menu-items-grid"> <!-- Aggiungi prodotto Pucce -->
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Puccia Uccelletti Classici al Forno</span>
+                                <span class="item-price">da 10,80 €</span>
+                            </div>
+                            <div class="item-desc">Scamorzine con bacon, insalata iceberg, pomodoro, olio extravergine d'oliva e sale</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Puccia Uccelletti di Carne alla Griglia</span>
+                                <span class="item-price">da 12,00 €</span>
+                            </div>
+                            <div class="item-desc">Involtino di coppa di maiale con scamorzina, insalata iceberg, pomodoro, olio extravergine d'oliva e sale</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Puccia con Bombette Classiche alla Griglia</span>
+                                <span class="item-price">da 12,00 €</span>
+                            </div>
+                            <div class="item-desc">Involtino di coppa di maiale con cotto alta qualità, scamorzina, insalata iceberg, pomodoro, olio e sale</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Puccia con Bombette Martinesi alla Griglia</span>
+                                <span class="item-price">da 13,00 €</span>
+                            </div>
+                            <div class="item-desc">Involtino di coppa di maiale con speck, caciocavallo fuso semi stagionato, insalata iceberg, pomodori, olio</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Puccia con Polpette al Sugo</span>
+                                <span class="item-price">da 12,00 €</span>
+                            </div>
+                            <div class="item-desc">Macinato di manzo scelto, uova, pane grattato, Grana Padano e pecorino romano</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Puccia Martinese</span>
+                                <span class="item-price">da 13,00 €</span>
+                            </div>
+                            <div class="item-desc">Capocollo di Martina Franca DOP, caciocavallo fuso, pomodori secchi e rucola</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Puccia con Hamburger Maxi 220g</span>
+                                <span class="item-price">da 15,00 €</span>
+                            </div>
+                            <div class="item-desc">Hamburger 220gr, edamer, bacon, insalata iceberg, pomodoro, olio e sale</div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Categoria: PUCCE CLASSICHE -->
+                <div class="menu-box" data-category="pucce">
+                    <h3><i class="fa-solid fa-bread-slice"></i> Pucce Classiche</h3>
+                    <div class="menu-items-grid"> <!-- Aggiungi prodotto Pucce Classiche -->
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Puccia Hamburger 150g</span>
+                                <span class="item-price">da 10,00 €</span>
+                            </div>
+                            <div class="item-desc">Hamburger 150g, insalata iceberg, pomodoro, olio e sale</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Puccia Salamella e Peperoni</span>
+                                <span class="item-price">da 11,00 €</span>
+                            </div>
+                            <div class="item-desc">Salamella, peperoni, olio e sale</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Puccia con Salsiccia</span>
+                                <span class="item-price">da 11,00 €</span>
+                            </div>
+                            <div class="item-desc">Salsiccia, iceberg, pomodoro, olio e sale</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Puccia con Salsiccia e Friarielli</span>
+                                <span class="item-price">da 12,00 €</span>
+                            </div>
+                            <div class="item-desc">Friarielli, salsiccia, olio e sale</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Puccia Porchetta</span>
+                                <span class="item-price">da 10,50 €</span>
+                            </div>
+                            <div class="item-desc">Porchetta, insalata iceberg, pomodoro, olio e sale</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Puccia Cotoletta</span>
+                                <span class="item-price">da 10,00 €</span>
+                            </div>
+                            <div class="item-desc">Cotoletta di pollo, insalata iceberg, pomodoro, olio e sale</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Puccia Kebab</span>
+                                <span class="item-price">da 10,50 €</span>
+                            </div>
+                            <div class="item-desc">Kebab di pollo scelto, insalata iceberg, pomodoro, olio e sale</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Puccia con Wurstel</span>
+                                <span class="item-price">da 9,50 €</span>
+                            </div>
+                            <div class="item-desc">Wurstel e patatine</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Puccia con Tonno</span>
+                                <span class="item-price">da 10,50 €</span>
+                            </div>
+                            <div class="item-desc">Tonno, edamer, insalata iceberg, pomodoro, olio e sale</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Puccia con Philadelphia</span>
+                                <span class="item-price">da 10,50 €</span>
+                            </div>
+                            <div class="item-desc">Philadelphia, prosciutto cotto alta qualità, insalata iceberg, pomodoro, olio e sale</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Puccia San Daniele</span>
+                                <span class="item-price">da 10,50 €</span>
+                            </div>
+                            <div class="item-desc">Prosciutto crudo San Daniele, edamer, insalata iceberg, pomodoro, olio e sale</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Puccia Calabrese <span class="badge-tag badge-spicy">Piccante</span></span>
+                                <span class="item-price">da 9,00 €</span>
+                            </div>
+                            <div class="item-desc">Spianata calabra, edamer, iceberg, pomodoro, olio extravergine d'oliva, sale e piccante</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Puccia Vegetariana <span class="badge-tag badge-veg">Veg</span></span>
+                                <span class="item-price">da 10,50 €</span>
+                            </div>
+                            <div class="item-desc">Melanzane, zucchine, peperoni, insalata iceberg, pomodoro, olio extravergine d'oliva e sale</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Puccia Caprese <span class="badge-tag badge-veg">Veg</span></span>
+                                <span class="item-price">da 9,00 €</span>
+                            </div>
+                            <div class="item-desc">Scamorza di mozzarella fusa, origano, pomodoro, insalata iceberg, olio extravergine d'oliva e sale</div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Categoria: PANZEROTTI -->
+                <div class="menu-box hidden" data-category="panzerotti">
+                    <h3>
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M21 15c0-5.52-4.48-10-10-10C6.5 5 2.73 7.99 1.46 12.11c-.28.91.32 1.89 1.27 1.89h16.54c.95 0 1.73-.78 1.73-1.73V15zm-15.5-2c1.1-2.36 3.5-4 6.25-4s5.15 1.64 6.25 4H5.5z"/>
+                        </svg>
+                        Panzerotti
+                    </h3>
+                    <div class="menu-items-grid"> <!-- Aggiungi prodotto Panzerotti -->
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Panzerotto Classico</span>
+                                <span class="item-price">5,00 €</span>
+                            </div>
+                            <div class="item-desc">Mozzarella e pomodoro</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Panzerotto Polpette</span>
+                                <span class="item-price">6,60 €</span>
+                            </div>
+                            <div class="item-desc">Polpette con ragù di carne</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Panzerotto con Cacio e Pepe</span>
+                                <span class="item-price">6,60 €</span>
+                            </div>
+                            <div class="item-desc">Mozzarella, pomodoro, bacon, pecorino e pepe</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Panzerotto Salsiccia e Friarielli</span>
+                                <span class="item-price">6,60 €</span>
+                            </div>
+                            <div class="item-desc">Mozzarella, salsiccia e friarielli</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Panzerotto Muratore</span>
+                                <span class="item-price">6,60 €</span>
+                            </div>
+                            <div class="item-desc">Mortadella, caciocavallo, mozzarella e pomodoro</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Panzerotto Pikachu</span>
+                                <span class="item-price">7,20 €</span>
+                            </div>
+                            <div class="item-desc">Wurstel, patatine e ketchup</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Panzerotto con Salame Piccante <span class="badge-tag badge-spicy">Piccante</span></span>
+                                <span class="item-price">6,00 €</span>
+                            </div>
+                            <div class="item-desc">Spianata calabra, mozzarella e pomodoro</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Panzerotto Prosciutto Cotto</span>
+                                <span class="item-price">6,00 €</span>
+                            </div>
+                            <div class="item-desc">Prosciutto cotto, mozzarella e pomodoro</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Panzerotto Uccelletti</span>
+                                <span class="item-price">6,00 €</span>
+                            </div>
+                            <div class="item-desc">Bacon con scamorza di mozzarella e pomodoro</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Panzerotto Gorgonzola</span>
+                                <span class="item-price">6,00 €</span>
+                            </div>
+                            <div class="item-desc">Gorgonzola, mozzarella e pomodoro</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Panzerotto Salsiccia</span>
+                                <span class="item-price">6,00 €</span>
+                            </div>
+                            <div class="item-desc">Salsiccia, mozzarella e pomodoro</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Panzerotto Ascuant</span>
+                                <span class="item-price">6,00 €</span>
+                            </div>
+                            <div class="item-desc">Ricotta forte stagionata, mozzarella e pomodoro</div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Categoria: PIZZE -->
+                <div class="menu-box hidden" data-category="pizze">
+                    <h3><i class="fa-solid fa-pizza-slice"></i> Pizze</h3>
+                    <div class="menu-items-grid"> <!-- Aggiungi prodotto Pizze -->
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Marinara</span>
+                                <span class="item-price">6,60 €</span>
+                            </div>
+                            <div class="item-desc">Pomodoro, origano e olio extravergine d'oliva</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Margherita</span>
+                                <span class="item-price">8,40 €</span>
+                            </div>
+                            <div class="item-desc">Pomodoro, mozzarella e olio extravergine d'oliva</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Polpette</span>
+                                <span class="item-price">13,20 €</span>
+                            </div>
+                            <div class="item-desc">Pomodoro, mozzarella, olio extravergine d'oliva e polpette di manzo</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Capricciosa</span>
+                                <span class="item-price">13,20 €</span>
+                            </div>
+                            <div class="item-desc">Pomodoro, mozzarella, olio extravergine d'oliva, funghi, carciofi, olive e prosciutto cotto</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Martinese</span>
+                                <span class="item-price">13,20 €</span>
+                            </div>
+                            <div class="item-desc">Pomodoro, mozzarella, caciocavallo, capocollo DOP di Martina Franca e olio extravergine d'oliva</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Quattro Formaggi</span>
+                                <span class="item-price">12,00 €</span>
+                            </div>
+                            <div class="item-desc">Pomodoro, mozzarella, gorgonzola, fontina, provola affumicata e olio extravergine d'oliva</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Quattro Stagioni</span>
+                                <span class="item-price">12,00 €</span>
+                            </div>
+                            <div class="item-desc">Pomodoro, mozzarella, olio extravergine d'oliva, funghi, carciofi, olive e prosciutto cotto</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">San Daniele</span>
+                                <span class="item-price">12,00 €</span>
+                            </div>
+                            <div class="item-desc">Pomodoro, mozzarella, olio extravergine d'oliva e prosciutto crudo San Daniele</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Tonno e Cipolla</span>
+                                <span class="item-price">12,20 €</span>
+                            </div>
+                            <div class="item-desc">Pomodoro, mozzarella, olio extravergine d'oliva, cipolla e tonno</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Diavola</span>
+                                <span class="item-price">12,00 €</span>
+                            </div>
+                            <div class="item-desc">Pomodoro, mozzarella, olio extravergine d'oliva e spianata calabrese</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Wurstel e Patatine</span>
+                                <span class="item-price">10,50 €</span>
+                            </div>
+                            <div class="item-desc">Pomodoro, mozzarella, wurstel e patate</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Valtellina</span>
+                                <span class="item-price">14,00 €</span>
+                            </div>
+                            <div class="item-desc">Pomodorini, mozzarella, olio extravergine d'oliva, rucola, bresaola e scaglie di grana</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Cotto e Funghi</span>
+                                <span class="item-price">11,00 €</span>
+                            </div>
+                            <div class="item-desc">Pomodoro, mozzarella, olio extravergine d'oliva e prosciutto cotto</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Contadina</span>
+                                <span class="item-price">12,00 €</span>
+                            </div>
+                            <div class="item-desc">Pomodoro, mozzarella, olio extravergine d'oliva, melanzane, zucchine e peperoni grigliati</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Salsiccia e Friarielli</span>
+                                <span class="item-price">14,00 €</span>
+                            </div>
+                            <div class="item-desc">Pomodoro, mozzarella, olio extravergine d'oliva, salsiccia fresca e friarielli</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Zola e Salame Piccante</span>
+                                <span class="item-price">12,00 €</span>
+                            </div>
+                            <div class="item-desc">Pomodoro, mozzarella, olio extravergine d'oliva, gorgonzola e spianata</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Speck e Zola</span>
+                                <span class="item-price">12,00 €</span>
+                            </div>
+                            <div class="item-desc">Pomodoro, mozzarella, olio extravergine d'oliva, speck e gorgonzola</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Salsiccia Fresca</span>
+                                <span class="item-price">12,00 €</span>
+                            </div>
+                            <div class="item-desc">Pomodoro, mozzarella, olio extravergine d'oliva e salsiccia fresca</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Napoletana</span>
+                                <span class="item-price">11,50 €</span>
+                            </div>
+                            <div class="item-desc">Pomodoro, mozzarella, acciughe e capperi</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Pizza Kebab</span>
+                                <span class="item-price">13,00 €</span>
+                            </div>
+                            <div class="item-desc">Pomodoro, mozzarella, olio extravergine d'oliva, kebab sceltissimo, cipolla e salsa yogurt</div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Categoria: PIATTI -->
+                <div class="menu-box hidden" data-category="piatti">
+                    <h3><i class="fa-solid fa-utensils"></i> Piatti</h3>
+                    <div class="menu-items-grid"> <!-- Aggiungi prodotto Piatti -->
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Poldo Misto</span>
+                                <span class="item-price">33,00 €</span>
+                            </div>
+                            <div class="item-desc">Misto di bombette martinesi, uccelletti classici e polpette al sugo</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Piatto Hamburger 220g</span>
+                                <span class="item-price">14,40 €</span>
+                            </div>
+                            <div class="item-desc">Accompagnato con contorno di insalata, pomodori e patate fritte</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Bombette Martinesi</span>
+                                <span class="item-price">18,00 €</span>
+                            </div>
+                            <div class="item-desc">Accompagnato con contorno di insalata, pomodori e patate fritte</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Bombette Classiche</span>
+                                <span class="item-price">16,00 €</span>
+                            </div>
+                            <div class="item-desc">Accompagnato con contorno di insalata, pomodori e patate fritte</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Uccelletti Classici</span>
+                                <span class="item-price">14,40 €</span>
+                            </div>
+                            <div class="item-desc">Accompagnato con contorno di insalata, pomodori e patate fritte</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Uccelletti di Carne</span>
+                                <span class="item-price">16,80 €</span>
+                            </div>
+                            <div class="item-desc">Accompagnato con contorno di insalata, pomodori e patate fritte</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Salsiccia e Friarielli</span>
+                                <span class="item-price">16,00 €</span>
+                            </div>
+                            <div class="item-desc">Accompagnato con contorno di insalata, pomodori e patate fritte</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Polpette di Carne al Sugo</span>
+                                <span class="item-price">16,00 €</span>
+                            </div>
+                            <div class="item-desc">Macinato di manzo scelto, uova, pan grattato, grana e pecorino romano</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Piatto Kebab</span>
+                                <span class="item-price">16,00 €</span>
+                            </div>
+                            <div class="item-desc">Kebab scelto, insalata, pomodorini e patatine</div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Categoria: FRITTI E FOCACCE -->
+                <div class="menu-box hidden" data-category="fritti">
+                    <h3>
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M18.5 9l-1-6h-2l.6 6H14V2h-2v7h-1.8l.6-6h-2l-1 6H5.5L7 21c.1.6.6 1 1.2 1h7.6c.6 0 1.1-.4 1.2-1l1.5-12zm-3.8 11H9.3L8.2 11h7.6l-1.1 9z"/>
+                        </svg>
+                        Fritti & Focacce
+                    </h3>
+                    <div class="menu-items-grid"> <!-- Aggiungi prodotto Fritti -->
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Patate Fritte Stick</span>
+                                <span class="item-price">da 5,00 €</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Patate Fritte Rustiche</span>
+                                <span class="item-price">da 5,00 €</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Nuggets di Pollo</span>
+                                <span class="item-price">6,00 €</span>
+                            </div>
+                            <div class="item-desc">6 pezzi</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Crocchette di Patate</span>
+                                <span class="item-price">6,00 €</span>
+                            </div>
+                            <div class="item-desc">6 pezzi</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Mozzarelline Impanate</span>
+                                <span class="item-price">6,00 €</span>
+                            </div>
+                            <div class="item-desc">6 pezzi</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Olive Ascolane</span>
+                                <span class="item-price">7,00 €</span>
+                            </div>
+                            <div class="item-desc">6 pezzi</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Arancino</span>
+                                <span class="item-price">5,00 €</span>
+                            </div>
+                            <div class="item-desc">Riso, ragù di carne, piselli e mozzarella</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Mozzarella in Carrozza Mignon</span>
+                                <span class="item-price">6,00 €</span>
+                            </div>
+                            <div class="item-desc">2 pezzi</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Focaccia Pugliese</span>
+                                <span class="item-price">3,50 €</span>
+                            </div>
+                            <div class="item-desc">Pomodorini, olio extravergine, sale e origano</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Focaccia Ripiena al Prosciutto Cotto <span class="badge-tag badge-na">Non disp.</span></span>
+                                <span class="item-price">—</span>
+                            </div>
+                            <div class="item-desc">Prosciutto cotto, mozzarella e pomodorini</div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Categoria: PER I BIMBI -->
+                <div class="menu-box hidden" data-category="bimbi">
+                    <h3><i class="fa-solid fa-child"></i> Per i Bimbi</h3>
+                    <div class="menu-items-grid"> <!-- Aggiungi prodotto Bimbi -->
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Piatto Hamburger 150g con Contorno di Patatine</span>
+                                <span class="item-price">7,00 €</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Piatto Wurstel con Contorno di Patatine</span>
+                                <span class="item-price">7,00 €</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Piatto Cotoletta con Contorno di Patatine</span>
+                                <span class="item-price">7,00 €</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Pizza Margherita Baby</span>
+                                <span class="item-price">7,00 €</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Pizza Prosciutto Cotto Baby</span>
+                                <span class="item-price">7,50 €</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Pizza Patate Baby</span>
+                                <span class="item-price">7,50 €</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Pizza Wurstel Baby</span>
+                                <span class="item-price">7,50 €</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Categoria: DOLCI -->
+                <div class="menu-box hidden" data-category="dolci">
+                    <h3><i class="fa-solid fa-cookie-bite"></i> Dolci</h3>
+                    <div class="menu-items-grid"> <!-- Aggiungi prodotto Dolci -->
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Panzerotto Fritto Nutella</span>
+                                <span class="item-price">6,00 €</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Panzerotto Fritto Pan di Stelle</span>
+                                <span class="item-price">6,00 €</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Puccia Nutella</span>
+                                <span class="item-price">7,00 €</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Puccia Pan di Stelle</span>
+                                <span class="item-price">7,00 €</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Tiramisù Fresco della Casa</span>
+                                <span class="item-price">6,00 €</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Categoria: BEVANDE -->
+                <div class="menu-box hidden" data-category="bevande">
+                    <h3><i class="fa-solid fa-glass-water"></i> Bevande</h3>
+                    <div class="menu-items-grid"> <!-- Aggiungi prodotto Bevande -->
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Acqua Naturale 1.5L</span>
+                                <span class="item-price">1,50 €</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Acqua Frizzante 1.5L</span>
+                                <span class="item-price">1,50 €</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="item-title">Bibita in lattina 33cl</span>
+                                <span class="item-price">3,50 €</span>
+                            </div>
+                            <div class="item-desc">Lemonsoda, Coca Cola, Coca Zero, Sprite, Fanta</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- SEZIONE CAROSELLO FOTO AMBIENTE -->
+    <section id="ambiente" class="carousel-section">
+        <div class="section-header">
+            <img src="ambienteScritta.png" alt="Il Nostro Ambiente" class="section-title-img"> <!-- Titolo Ambiente -->
+        </div>
+
+        <div class="carousel-container">
+            <button class="carousel-btn prev-btn" id="prevBtn" aria-label="Precedente"><i class="fa-solid fa-chevron-left"></i></button>
+            
+            <div class="carousel-track"> <!-- Aggiungi Foto -->
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80" alt="Locale interno"></div>
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" alt="Banco pucceria"></div>
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="Sala accogliente"></div>
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=800&q=80" alt="Tavoli esterni"></div>
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" alt="Panini e specialità"></div>
+            </div>
+
+            <button class="carousel-btn next-btn" id="nextBtn" aria-label="Successiva"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+
+
+    <!-- SEZIONE CHI SIAMO E LAVORA CON NOI -->
+    <section id="chisiamo" class="about-section">
+        <div class="about-container">
+            <div class="about-content">
+                <img src="chiSiamoScritta.png" alt="Chi Siamo" class="section-title-img"> <!-- Titolo Chi Siamo -->
+                <p>Nati dall'amore per la tradizione e lo street food pugliese più autentico, a <strong>La Puccia di Poldo</strong> portiamo ogni giorno la croccantezza inconfondibile della puccia sfornata fresca e ingredienti selezionati di primissima qualità.</p> <!-- Testo Chi Siamo 1 -->
+                <p>Un ambiente familiare, accogliente e informale, pensato per farti sentire come a casa tua nel cuore di Brugherio.</p> <!-- Testo Chi Siamo 2 -->
+            </div>
+
+            <div class="contact-info-box" id="lavora">
+                <h3>Lavora con Noi & Dati</h3>
+                <ul class="info-list">
+                    <li>
+                        <i class="fa-solid fa-briefcase"></i>
+                        <div>
+                            <strong>Opportunità di Lavoro:</strong><br>
+                            Invia il tuo CV a: <br><span style="color: var(--light-orange);">lavora@lapucciadipoldo-fasulla.it</span> <!-- Email Lavoro -->
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div>
+                            <strong>Indirizzo & Società:</strong><br>
+                            La Puccia di Poldo S.R.L. – Via della Repubblica 15, 20861 Brugherio (MB)<br> <!-- Indirizzo Locale -->
+                            P.IVA: 09876543210
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- FOOTER FONDO PAGINA -->
+    <footer>
+        <p>&copy; 2026 La Puccia di Poldo - Brugherio. Tutti i diritti riservati.</p> <!-- Testo Copyright -->
+        <p class="fiscal-data">La Puccia di Poldo S.R.L. &bull; P.IVA 09876543210 &bull; Via della Repubblica 15, Brugherio (MB)</p> <!-- Dati Fiscali -->
+    </footer>
+
+
+
+    <!-- CODICE FUNZIONAMENTO MENU E CAROSELLO -->
+    <script>
+        /* Apertura menu su cellulare */
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        /* Filtro bottoni menu */
+        const tabBtns = document.querySelectorAll('.menu-tab-btn');
+        const menuBoxes = document.querySelectorAll('.menu-box');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+                menuBoxes.forEach(box => {
+                    if (box.getAttribute('data-category') === filter) {
+                        box.classList.remove('hidden');
+                    } else {
+                        box.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        /* Scorrimento carosello foto */
+        const slides = document.querySelectorAll('.carousel-slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentIndex = 2; /* Foto iniziale carosello */
+
+        function updateCarousel() {
+            slides.forEach((slide, index) => {
+                slide.className = 'carousel-slide';
+                const total = slides.length;
+                let diff = (index - currentIndex + total) % total;
+                if (diff > total / 2) diff -= total;
+
+                if (diff === 0) {
+                    slide.classList.add('active');
+                } else if (diff === -1) {
+                    slide.classList.add('prev');
+                } else if (diff === 1) {
+                    slide.classList.add('next');
+                }
+            });
+        }
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateCarousel();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            updateCarousel();
+        });
+
+        updateCarousel();
+    </script>
+</body>
+</html>
